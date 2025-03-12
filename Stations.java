@@ -1,7 +1,5 @@
 public class Stations {
-        
-    public static String[] getStations() {
-        String[] Stations = {
+    static String[] stations = {
             "1) Ashford Road", 
             "2) Brookside Avenue", 
             "3) Castle Hill", 
@@ -29,12 +27,14 @@ public class Stations {
             "25) York Road", 
             "26) Zephyr Close"
         };
-    return Stations;
+    
+        public static void getStations() {
+            for (String station : stations) {
+            System.out.println(station);
+        }
     }
 
-    public static void getDetailsStation(Integer id) {
-        String[] Stations = getStations();
-        System.out.println(Stations[--id]);
+    public void getDetailsStation(Integer id) {
+        System.out.println(stations[--id]);
     }
-    
 }
