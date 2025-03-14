@@ -39,7 +39,7 @@ public class Interface {
                 montrerMenu();
                 break;
             case "5":
-                afficherDetailsStation();
+                Stations.getDetailsStation(0);
                 System.out.print("\n\n\n\n\n");
                 montrerMenu();
                 break;

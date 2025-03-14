@@ -34,7 +34,7 @@ public class Stations {
         }
     }
 
-    public void getDetailsStation(Integer id) {
+    public static void getDetailsStation(Integer id) {
         System.out.println(stations[--id]);
     }
 }
