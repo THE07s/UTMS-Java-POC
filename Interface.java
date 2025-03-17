@@ -19,27 +19,29 @@ public class Interface {
     public static void choixMenu(String choix) {
         switch (choix) {
             case "1":
-                Stations.getStations();
+                Stations.listerToutesLesStations();
                 System.out.print("\n\n\n\n\n");
                 montrerMenu();
                 break;
             case "2":
-                Trajet.getTrajet();
+                System.out.print("Entrez l'ID de la station: ");
+                int id = Integer.parseInt(System.console().readLine());
+                Stations.afficherInformationsStation(id);
                 System.out.print("\n\n\n\n\n");
                 montrerMenu();
                 break;
             case "3":
-                Lignes.getLignes();
+                Trajet.getTrajet();
                 System.out.print("\n\n\n\n\n");
                 montrerMenu();
                 break;
             case "4":
-                Prix.getPrixTicket();
+                Lignes.getLignes();
                 System.out.print("\n\n\n\n\n");
                 montrerMenu();
                 break;
             case "5":
-                Stations.getDetailsStation(0);
+                Prix.getPrixTicket();
                 System.out.print("\n\n\n\n\n");
                 montrerMenu();
                 break;
