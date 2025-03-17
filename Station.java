@@ -120,12 +120,8 @@ public class Station {
         return directionLongitude;
     }
 
-    /**
-     * Retourne un résumé du nom et de l'ID de la station.
-     */
-    @Override
     public String toString() {
-        return nom + " (ID: " + identifiant + ")";
+        return identifiant + ") " + nom;
     }
 
     /**
