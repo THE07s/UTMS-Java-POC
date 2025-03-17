@@ -1,5 +1,3 @@
-
-
 public class Distance {
     public static 
 
@@ -47,7 +45,7 @@ public static void coosstations(String[] args) {
             {52.64804, 1.29199}, // Brookside Avenue
             {52.64878, 1.30789}, // Castle Hill
             {52.64878, 1.27636}, // Dunham End
-            {52.64609, 1.28726}, // Eastbourne West
+            {52.64609, 1.28726}, // Eastbourne West 
             {52.64609, 1.28726}, // Fairfields
             {52.64038, 1.28888}, // Grand Central
             {52.64348, 1.30597}, // High Street
