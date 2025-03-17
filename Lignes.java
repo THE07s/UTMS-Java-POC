@@ -31,4 +31,9 @@ public class Lignes {
                     {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} //Z
                 };
     }
+
+    public static void afficherInformationsLigne(int idLigne) {
+        // TODO : implémenter la méthode
+        throw new UnsupportedOperationException("Unimplemented method 'listerStationsAlphabetiquementInverse'");
+    }
 }

@@ -284,6 +284,11 @@ public class Stations {
         }
     }
 
+    public static void listerToutesLesStationsInverse() {
+        // TODO : implémenter la méthode
+        throw new UnsupportedOperationException("Unimplemented method 'listerStationsAlphabetiquementInverse'");
+    }
+
     /**
      * Affiche les informations détaillées d'une station en fonction de son identifiant (base 1).
      *
@@ -364,4 +369,5 @@ public class Stations {
         }
         return resultat;
     }
+
 }
