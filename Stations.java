@@ -14,7 +14,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus, Metro",
                 52, 39, 0.7884, 'N',
-                 1, 17, 55.4244, 'E'
+                1, 17, 55.4244, 'E'
         ));
 
         // 2) Brookside Avenue
@@ -24,7 +24,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus",
                 52, 38, 52.9512, 'N',
-                 1, 17, 27.276, 'E'
+                1, 17, 27.276, 'E'
         ));
 
         // 3) Castle Hill
@@ -34,7 +34,7 @@ public class Stations {
                 servicesGeneriques,
                 "Tram",
                 52, 38, 55.6116, 'N',
-                 1, 18, 28.4184, 'E'
+                1, 18, 28.4184, 'E'
         ));
 
         // 4) Dunham End
@@ -44,7 +44,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus, Tram",
                 52, 38, 55.608, 'N',
-                 1, 16, 34.8996, 'E'
+                1, 16, 34.8996, 'E'
         ));
 
         // 5) Eastbourne West
@@ -53,8 +53,8 @@ public class Stations {
                 "Eastbourne West",
                 servicesGeneriques,
                 "Bus",
-                52, 38, 45.9276, 'N',
-                 1, 17, 14.1252, 'E'
+                52, 38, 41.1936, 'N',
+                1, 17, 14.1252, 'E'
         ));
 
         // 6) Fairfields
@@ -64,7 +64,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus",
                 52, 38, 45.9276, 'N',
-                 1, 17, 14.1252, 'E'
+                1, 17, 27.276, 'E'
         ));
 
         // 7) Grand Central
@@ -74,7 +74,7 @@ public class Stations {
                 servicesGeneriques,
                 "Metro",
                 52, 38, 25.3716, 'N',
-                 1, 17, 20.5836, 'E'
+                1, 17, 20.5836, 'E'
         ));
 
         // 8) High Street
@@ -84,7 +84,7 @@ public class Stations {
                 servicesGeneriques,
                 "Metro, Tram",
                 52, 38, 38.5332, 'N',
-                 1, 18, 21.4956, 'E'
+                1, 18, 21.4956, 'E'
         ));
 
         // 9) Ivy Lane
@@ -94,7 +94,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus",
                 52, 38, 37.1328, 'N',
-                 1, 16, 52.2048, 'E'
+                1, 16, 52.2048, 'E'
         ));
 
         // 10) Jubilee Place
@@ -104,7 +104,7 @@ public class Stations {
                 servicesGeneriques,
                 "Metro",
                 52, 38, 39.336, 'N',
-                 1, 15, 50.832, 'E'
+                1, 15, 50.832, 'E'
         ));
 
         // 11) King's Way
@@ -114,7 +114,7 @@ public class Stations {
                 servicesGeneriques,
                 "Metro",
                 52, 38, 21.7608, 'N',
-                 1, 16, 44.13, 'E'
+                1, 16, 44.13, 'E'
         ));
 
         // 12) Lakeside
@@ -124,7 +124,7 @@ public class Stations {
                 servicesGeneriques,
                 "Tram",
                 52, 38, 41.1936, 'N',
-                 1, 18, 0.9612, 'E'
+                1, 18, 0.9612, 'E'
         ));
 
         // 13) Market Place
@@ -134,7 +134,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus",
                 52, 38, 19.77, 'N',
-                 1, 17, 47.8104, 'E'
+                1, 17, 47.8104, 'E'
         ));
 
         // 14) Northgate Shopping Centre
@@ -144,7 +144,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus, Tram",
                 52, 38, 23.712, 'N',
-                 1, 18, 26.5716, 'E'
+                1, 18, 26.5716, 'E'
         ));
 
         // 15) Oakwoods
@@ -154,7 +154,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus",
                 52, 38, 16.5516, 'N',
-                 1, 16, 58.404, 'E'
+                1, 16, 58.404, 'E'
         ));
 
         // 16) Parkside Place
@@ -164,7 +164,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus",
                 52, 38, 17.1132, 'N',
-                 1, 16, 23.5956, 'E'
+                1, 16, 23.5956, 'E'
         ));
 
         // 17) Queensbridge
@@ -174,7 +174,7 @@ public class Stations {
                 servicesGeneriques,
                 "Tram",
                 52, 38, 1.0104, 'N',
-                 1, 16, 42.9744, 'E'
+                1, 16, 42.9744, 'E'
         ));
 
         // 18) Riverside
@@ -184,7 +184,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus",
                 52, 37, 57.0864, 'N',
-                 1, 16, 24.5172, 'E'
+                1, 16, 24.5172, 'E'
         ));
 
         // 19) Southbank Place
@@ -194,7 +194,7 @@ public class Stations {
                 servicesGeneriques,
                 "Metro",
                 52, 37, 55.3368, 'N',
-                 1, 17, 18.9708, 'E'
+               1, 17, 18.9708, 'E'
         ));
 
         // 20) Town Hall
@@ -204,7 +204,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus, Metro",
                 52, 38, 14.4528, 'N',
-                 1, 17, 18.9708, 'E'
+                1, 17, 18.9708, 'E'
         ));
 
         // 21) Union Street
@@ -214,7 +214,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus",
                 52, 37, 59.3292, 'N',
-                 1, 17, 44.2572, 'E'
+                1, 17, 44.2572, 'E'
         ));
 
         // 22) Victoria Docks
@@ -224,7 +224,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus, Metro",
                 52, 38, 7.17, 'N',
-                 1, 18, 0.0396, 'E'
+                1, 18, 0.0396, 'E'
         ));
 
         // 23) Waterfront
@@ -234,7 +234,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus",
                 52, 37, 57.2268, 'N',
-                 1, 17, 56.8068, 'E'
+                1, 17, 56.8068, 'E'
         ));
 
         // 24) Xenobiotics Research Facility
@@ -244,7 +244,7 @@ public class Stations {
                 servicesGeneriques,
                 "Tram",
                 52, 38, 9.2688, 'N',
-                 1, 18, 21.9384, 'E'
+                1, 18, 21.9384, 'E'
         ));
 
         // 25) York Road
@@ -254,7 +254,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus",
                 52, 38, 6.3312, 'N',
-                 1, 16, 10.6752, 'E'
+                1, 16, 10.6752, 'E'
         ));
 
         // 26) Zephyr Close
@@ -264,7 +264,7 @@ public class Stations {
                 servicesGeneriques,
                 "Bus, Tram",
                 52, 39, 5.4108, 'N',
-                 1, 16, 48.0504, 'E'
+                1, 16, 48.0504, 'E'
         ));
     }
 
