@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * La classe Station représente une station du réseau de transport.
  * Elle contient un identifiant, un nom, une description des services,
@@ -8,8 +10,8 @@ public class Station {
     // --- Attributs principaux ---
     private int identifiant;
     private String nom;
-    private String servicesDisponibles;
-    private String lignesDesservies;
+    private String[] servicesDisponibles;
+    private String[] lignesDesservies;
 
     // --- Coordonnées latitude ---
     private int degresLatitude;
@@ -26,25 +28,25 @@ public class Station {
     /**
      * Constructeur de la classe Station.
      *
-     * @param identifiant        L'identifiant numérique de la station.
-     * @param nom                Le nom de la station.
-     * @param servicesDisponibles  Les services disponibles à la station.
-     * @param lignesDesservies   Les lignes de transport desservies par la station.
+     * @param identifiant           L'identifiant numérique de la station.
+     * @param nom                   Le nom de la station.
+     * @param servicesDisponibles   Les services disponibles à la station.
+     * @param lignesDesservies      Les lignes de transport desservies par la station.
      *
-     * @param degLat   Degrés de la latitude.
-     * @param minLat   Minutes de la latitude.
-     * @param secLat   Secondes de la latitude.
-     * @param dirLat   Direction de la latitude ('N' ou 'S').
+     * @param degLat                Degrés de la latitude.
+     * @param minLat                Minutes de la latitude.
+     * @param secLat                Secondes de la latitude.
+     * @param dirLat                Direction de la latitude ('N' ou 'S').
      *
-     * @param degLong  Degrés de la longitude.
-     * @param minLong  Minutes de la longitude.
-     * @param secLong  Secondes de la longitude.
-     * @param dirLong  Direction de la longitude ('E' ou 'W').
+     * @param degLong               Degrés de la longitude.
+     * @param minLong               Minutes de la longitude.
+     * @param secLong               Secondes de la longitude.
+     * @param dirLong               Direction de la longitude ('E' ou 'W').
      */
     public Station(int identifiant,
                    String nom,
-                   String servicesDisponibles,
-                   String lignesDesservies,
+                   String[] servicesDisponibles,
+                   String[] lignesDesservies,
                    int degLat,
                    int minLat,
                    double secLat,
@@ -81,11 +83,11 @@ public class Station {
     }
 
     public String getServicesDisponibles() {
-        return servicesDisponibles;
+        return Arrays.toString(servicesDisponibles);
     }
 
     public String getLignesDesservies() {
-        return lignesDesservies;
+        return Arrays.toString(lignesDesservies);
     }
 
     public int getDegresLatitude() {
@@ -129,8 +131,8 @@ public class Station {
      */
     public String informationsDetaillees() {
         return "Nom : " + nom + "\n"
-             + "Services disponibles : " + servicesDisponibles + "\n"
-             + "Lignes desservies : " + lignesDesservies + "\n"
+             + "Services disponibles : " + this.getServicesDisponibles() + "\n"
+             + "Lignes desservies : " + this.getLignesDesservies() + "\n"
              + "Coordonnées : "
              + degresLatitude + "° "
              + minutesLatitude + "' "

@@ -5,14 +5,12 @@ public class Stations {
 
     // Bloc statique : initialisation de toutes les stations
     static {
-        String servicesGeneriques = "Guichet, Consignes, Centre d'information, Toilettes, Boutiques, Restaurants";
-
         // 1) Ashford Road
         listeStations.add(new Station(
                 1,
                 "Ashford Road",
-                servicesGeneriques,
-                "Bus, Metro",
+                new String[]{"🛅 - Consignes", "👤 - Assistance", "♿️🚫 - Pas d'accéssibilité", "ℹ️ - Point d’information"},
+                new String[]{"Bus", "Metro"},
                 52, 39, 0.7884, 'N',
                 1, 17, 55.4244, 'E'
         ));
@@ -21,8 +19,8 @@ public class Stations {
         listeStations.add(new Station(
                 2,
                 "Brookside Avenue",
-                servicesGeneriques,
-                "Bus",
+                new String[]{"👤 - Assistance"},
+                new String[]{"Tram", "Metro"},
                 52, 38, 52.9512, 'N',
                 1, 17, 27.276, 'E'
         ));
@@ -31,8 +29,8 @@ public class Stations {
         listeStations.add(new Station(
                 3,
                 "Castle Hill",
-                servicesGeneriques,
-                "Tram",
+                new String[]{},
+                new String[]{"Bus"},
                 52, 38, 55.6116, 'N',
                 1, 18, 28.4184, 'E'
         ));
@@ -41,8 +39,8 @@ public class Stations {
         listeStations.add(new Station(
                 4,
                 "Dunham End",
-                servicesGeneriques,
-                "Bus, Tram",
+                new String[]{},
+                new String[]{"Bus"},
                 52, 38, 55.608, 'N',
                 1, 16, 34.8996, 'E'
         ));
@@ -51,8 +49,8 @@ public class Stations {
         listeStations.add(new Station(
                 5,
                 "Eastbourne West",
-                servicesGeneriques,
-                "Bus",
+                new String[]{},
+                new String[]{"Bus", "Tram"},
                 52, 38, 41.1936, 'N',
                 1, 17, 14.1252, 'E'
         ));
@@ -61,8 +59,8 @@ public class Stations {
         listeStations.add(new Station(
                 6,
                 "Fairfields",
-                servicesGeneriques,
-                "Bus",
+                new String[]{"👤 - Assistance"},
+                new String[]{"Metro", "Bus", "Tram"},
                 52, 38, 45.9276, 'N',
                 1, 17, 27.276, 'E'
         ));
@@ -71,8 +69,8 @@ public class Stations {
         listeStations.add(new Station(
                 7,
                 "Grand Central",
-                servicesGeneriques,
-                "Metro",
+                new String[]{"🛒 - Zone commerciale", "🛅 - Consignes", "👤 - Assistance", "🚻 - Toilettes", "ℹ️ - Point d’information"},
+                new String[]{"Metro", "Bus", "Tram"},
                 52, 38, 25.3716, 'N',
                 1, 17, 20.5836, 'E'
         ));
@@ -81,8 +79,8 @@ public class Stations {
         listeStations.add(new Station(
                 8,
                 "High Street",
-                servicesGeneriques,
-                "Metro, Tram",
+                new String[]{"🛒 - Zone commerciale"},
+                new String[]{"Bus"},
                 52, 38, 38.5332, 'N',
                 1, 18, 21.4956, 'E'
         ));
@@ -91,8 +89,8 @@ public class Stations {
         listeStations.add(new Station(
                 9,
                 "Ivy Lane",
-                servicesGeneriques,
-                "Bus",
+                new String[]{},
+                new String[]{"Bus"},
                 52, 38, 37.1328, 'N',
                 1, 16, 52.2048, 'E'
         ));
@@ -101,8 +99,8 @@ public class Stations {
         listeStations.add(new Station(
                 10,
                 "Jubilee Place",
-                servicesGeneriques,
-                "Metro",
+                new String[]{"👤 - Assistance"},
+                new String[]{"Metro", "Tram"},
                 52, 38, 39.336, 'N',
                 1, 15, 50.832, 'E'
         ));
@@ -111,8 +109,8 @@ public class Stations {
         listeStations.add(new Station(
                 11,
                 "King’s Way",
-                servicesGeneriques,
-                "Metro",
+                new String[]{"👤 - Assistance", "♿️🚫 - Pas d'accéssibilité", "ℹ️ - Point d’information"},
+                new String[]{"Metro", "Bus", "Tram"},
                 52, 38, 21.7608, 'N',
                 1, 16, 44.13, 'E'
         ));
@@ -121,8 +119,8 @@ public class Stations {
         listeStations.add(new Station(
                 12,
                 "Lakeside",
-                servicesGeneriques,
-                "Tram",
+                new String[]{},
+                new String[]{"Bus"},
                 52, 38, 41.1936, 'N',
                 1, 18, 0.9612, 'E'
         ));
@@ -131,8 +129,8 @@ public class Stations {
         listeStations.add(new Station(
                 13,
                 "Market Place",
-                servicesGeneriques,
-                "Bus",
+                new String[]{"🛒 - Zone commerciale", "👤 - Assistance", "♿️🚫 - Pas d'accéssibilité"},
+                new String[]{"Tram", "Metro"},
                 52, 38, 19.77, 'N',
                 1, 17, 47.8104, 'E'
         ));
@@ -141,8 +139,8 @@ public class Stations {
         listeStations.add(new Station(
                 14,
                 "Northgate Shopping Centre",
-                servicesGeneriques,
-                "Bus, Tram",
+                new String[]{"🛒 - Zone commerciale", "👤 - Assistance"},
+                new String[]{"Bus", "Metro"},
                 52, 38, 23.712, 'N',
                 1, 18, 26.5716, 'E'
         ));
@@ -151,8 +149,8 @@ public class Stations {
         listeStations.add(new Station(
                 15,
                 "Oakwoods",
-                servicesGeneriques,
-                "Bus",
+                new String[]{},
+                new String[]{"Bus"},
                 52, 38, 16.5516, 'N',
                 1, 16, 58.404, 'E'
         ));
@@ -161,8 +159,8 @@ public class Stations {
         listeStations.add(new Station(
                 16,
                 "Parkside Place",
-                servicesGeneriques,
-                "Bus",
+                new String[]{},
+                new String[]{"Bus", "Tram"},
                 52, 38, 17.1132, 'N',
                 1, 16, 23.5956, 'E'
         ));
@@ -171,8 +169,8 @@ public class Stations {
         listeStations.add(new Station(
                 17,
                 "Queensbridge",
-                servicesGeneriques,
-                "Tram",
+                new String[]{},
+                new String[]{"Bus"},
                 52, 38, 1.0104, 'N',
                 1, 16, 42.9744, 'E'
         ));
@@ -181,8 +179,8 @@ public class Stations {
         listeStations.add(new Station(
                 18,
                 "Riverside",
-                servicesGeneriques,
-                "Bus",
+                new String[]{},
+                new String[]{"Bus"},
                 52, 37, 57.0864, 'N',
                 1, 16, 24.5172, 'E'
         ));
@@ -191,8 +189,8 @@ public class Stations {
         listeStations.add(new Station(
                 19,
                 "Southbank Place",
-                servicesGeneriques,
-                "Metro",
+                new String[]{"🛒 - Zone commerciale", "♿️🚫 - Pas d'accéssibilité"},
+                new String[]{"Bus", "Tram"},
                 52, 37, 55.3368, 'N',
                1, 17, 18.9708, 'E'
         ));
@@ -201,8 +199,8 @@ public class Stations {
         listeStations.add(new Station(
                 20,
                 "Town Hall",
-                servicesGeneriques,
-                "Bus, Metro",
+                new String[]{},
+                new String[]{"Metro"},
                 52, 38, 14.4528, 'N',
                 1, 17, 18.9708, 'E'
         ));
@@ -211,8 +209,8 @@ public class Stations {
         listeStations.add(new Station(
                 21,
                 "Union Street",
-                servicesGeneriques,
-                "Bus",
+                new String[]{"👤 - Assistance"},
+                new String[]{"Bus"},
                 52, 37, 59.3292, 'N',
                 1, 17, 44.2572, 'E'
         ));
@@ -221,8 +219,8 @@ public class Stations {
         listeStations.add(new Station(
                 22,
                 "Victoria Docks",
-                servicesGeneriques,
-                "Bus, Metro",
+                new String[]{"🛅 - Consignes", "👤 - Assistance", "🚻 - Toilettes"},
+                new String[]{"Bus", "Metro", "Tram"},
                 52, 38, 7.17, 'N',
                 1, 18, 0.0396, 'E'
         ));
@@ -231,18 +229,18 @@ public class Stations {
         listeStations.add(new Station(
                 23,
                 "Waterfront",
-                servicesGeneriques,
-                "Bus",
+                new String[]{},
+                new String[]{"Bus"},
                 52, 37, 57.2268, 'N',
                 1, 17, 56.8068, 'E'
         ));
 
-        // 24) Xenobiotics Research Facility
+        // 24) Xenobiotics Research Center
         listeStations.add(new Station(
                 24,
-                "Xenobiotics Research Facility",
-                servicesGeneriques,
-                "Tram",
+                "Xenobiotics Research Center",
+                new String[]{},
+                new String[]{"Bus"},
                 52, 38, 9.2688, 'N',
                 1, 18, 21.9384, 'E'
         ));
@@ -251,8 +249,8 @@ public class Stations {
         listeStations.add(new Station(
                 25,
                 "York Road",
-                servicesGeneriques,
-                "Bus",
+                new String[]{},
+                new String[]{"Bus"},
                 52, 38, 6.3312, 'N',
                 1, 16, 10.6752, 'E'
         ));
@@ -261,8 +259,8 @@ public class Stations {
         listeStations.add(new Station(
                 26,
                 "Zephyr Close",
-                servicesGeneriques,
-                "Bus, Tram",
+                new String[]{},
+                new String[]{"Bus"},
                 52, 39, 5.4108, 'N',
                 1, 16, 48.0504, 'E'
         ));

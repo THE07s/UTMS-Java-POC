@@ -21,7 +21,7 @@ public class Interface {
         switch (choix) {
             case "1":
                 // Trier et afficher les stations dans l'ordre alphabétique inverse
-                Stations.listerToutesLesStationsInverse();
+                Stations.listerToutesLesStations();
                 System.out.print("\n\n");
                 montrerMenu();
                 break;
