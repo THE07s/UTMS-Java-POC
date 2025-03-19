@@ -1,8 +1,8 @@
 public class Interface {
     public static void montrerMenu() {
-        System.out.println("==========================================================");
-        System.out.println("|               MENU PRINCIPAL                            |");
-        System.out.println("==========================================================");
+        System.out.println("===========================================================");
+        System.out.println("|                       MENU PRINCIPAL                    |");
+        System.out.println("===========================================================");
         System.out.println("| 1) Afficher la liste des stations                       |");
         System.out.println("| 2) Afficher les détails d'une station                   |");
         System.out.println("| 3) Choisir un trajet (accessibilité, distances, temps)  |");
@@ -10,7 +10,7 @@ public class Interface {
         System.out.println("| 5) Afficher le détail d'une ligne                       |");
         System.out.println("| 6) Information prix ticket                              |");
         System.out.println("| 7) Quitter                                              |");
-        System.out.println("==========================================================");
+        System.out.println("===========================================================");
         System.out.print("\nVeuillez choisir une option: ");
         String choix = System.console().readLine();
         System.out.print("\n\n");
@@ -21,7 +21,22 @@ public class Interface {
         switch (choix) {
             case "1":
                 // Trier et afficher les stations dans l'ordre alphabétique inverse
-                Stations.listerToutesLesStations();
+                System.out.println("===========================================================");
+                System.out.println("|                     LISTE DE STATIONS                   |");
+                System.out.println("===========================================================");
+                System.out.println("| 1) Ordre alphabétique                                   |");
+                System.out.println("| 2) Ordre anti-alphabétique                              |");
+                System.out.println("===========================================================");
+                System.out.print("\nVeuillez choisir une option: ");
+                String choix_liste_station = System.console().readLine();
+                switch (choix_liste_station) {
+                    case "1":
+                        Stations.listerToutesLesStations();
+                        break;
+                    case "2":
+                        Stations.listerToutesLesStationsInverse();
+                        break;
+                }
                 System.out.print("\n\n");
                 montrerMenu();
                 break;
@@ -39,7 +54,7 @@ public class Interface {
                 montrerMenu();
                 break;
             case "4":
-                Lignes.getLignes();
+                Stations.listerToutesLesLignes();
                 System.out.print("\n\n");
                 montrerMenu();
                 break;

@@ -5,20 +5,20 @@
 import java.util.*;
 
 class Graphe {
-    private Map<Character, List<Character>> adjList;
+    private Map<Character, List<Character>> listeAdjacence;
     public Graphe() {
-        this.adjList = new HashMap<>();
+        this.listeAdjacence = new HashMap<>();
     }
 
     public void addEdge(char from, char to) {
-        adjList.putIfAbsent(from, new ArrayList<>());
-        adjList.putIfAbsent(to, new ArrayList<>()); // S'assure que le sommet existe
-        adjList.get(from).add(to);
-        adjList.get(to).add(from); // Supposons un graphe **non orienté**
+        listeAdjacence.putIfAbsent(from, new ArrayList<>());
+        listeAdjacence.putIfAbsent(to, new ArrayList<>()); // S'assure que le sommet existe
+        listeAdjacence.get(from).add(to);
+        listeAdjacence.get(to).add(from); // Supposons un graphe **non orienté**
     }
 
     public void printGraph() {
-        for (var entry : adjList.entrySet()) {
+        for (var entry : listeAdjacence.entrySet()) {
             System.out.print(entry.getKey() + " -> ");
             System.out.println(entry.getValue());
         }
@@ -65,5 +65,60 @@ class Graphe {
         }
 
         graph.printGraph();
+    }
+
+
+
+
+
+    public void ajouterArete(char depart, char arrivee) {
+        listeAdjacence.putIfAbsent(depart, new ArrayList<>());
+        listeAdjacence.putIfAbsent(arrivee, new ArrayList<>()); 
+        listeAdjacence.get(depart).add(arrivee);
+        listeAdjacence.get(arrivee).add(depart); 
+    }
+
+    public void afficherGraphe() {
+        for (var entree : listeAdjacence.entrySet()) {
+            System.out.print(entree.getKey() + " -> ");
+            System.out.println(entree.getValue());
+        }
+    }
+
+    public List<Character> cheminLePlusCourt(char depart, char arrivee) {
+        Map<Character, Character> parent = new HashMap<>();
+        Queue<Character> file = new LinkedList<>();
+        Set<Character> visite = new HashSet<>();
+
+        file.add(depart);
+        visite.add(depart);
+        parent.put(depart, null);
+
+        while (!file.isEmpty()) {
+            char courant = file.poll();
+
+            if (courant == arrivee) {
+                return reconstruireChemin(parent, depart, arrivee);
+            }
+
+            for (char voisin : listeAdjacence.getOrDefault(courant, new ArrayList<>())) {
+                if (!visite.contains(voisin)) {
+                    visite.add(voisin);
+                    parent.put(voisin, courant);
+                    file.add(voisin);
+                }
+            }
+        }
+
+        return new ArrayList<>(); // Retourne une liste vide si aucun chemin n'est trouvé
+    }
+
+    private List<Character> reconstruireChemin(Map<Character, Character> parent, char depart, char arrivee) {
+        List<Character> chemin = new ArrayList<>();
+        for (Character actuel = arrivee; actuel != null; actuel = parent.get(actuel)) {
+            chemin.add(actuel);
+        }
+        Collections.reverse(chemin);
+        return chemin;
     }
 }
