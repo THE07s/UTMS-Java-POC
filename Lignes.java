@@ -16,7 +16,7 @@ public class Lignes {
         // Exemple de données pour les lignes
         String[] stations = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
-        // Ajouter des arêtes aux graphes
+        // Ajouter des nœuds aux graphes
         for (String station : stations) {
             graphPrix.addNode(station);
             graphDistance.addNode(station);
@@ -36,6 +36,64 @@ public class Lignes {
         graphDistance.addEdge(from, to, distance);
         graphAccessibilite.addEdge(from, to, accessibilite);
         graphTemps.addEdge(from, to, temps);
+    }
+
+    public static double calculerPrix(double distance, String typeTransport, String typeUsager) {
+        double tarifBase = 1.50; // Tarif de base en euros
+        double multiplicateur = 1.0;
+
+        switch (typeTransport) {
+            case "Metro":
+                multiplicateur = 1.2;
+                break;
+            case "Tram":
+                multiplicateur = 1.0;
+                break;
+            case "Bus":
+                multiplicateur = 0.8;
+                break;
+        }
+
+        switch (typeUsager) {
+            case "handicapé":
+                multiplicateur *= 0.5;
+                break;
+            case "étudiant":
+                multiplicateur *= 0.8;
+                break;
+            case "normal":
+                multiplicateur *= 1.0;
+                break;
+        }
+
+        return tarifBase + (distance / 1000) * multiplicateur;
+    }
+
+    public static double calculerTemps(double distance, String typeTransport) {
+        double vitesse = 0;
+
+        switch (typeTransport) {
+            case "Metro":
+                vitesse = 500; // Vitesse en m/s
+                break;
+            case "Tram":
+                vitesse = 400; // Vitesse en m/s
+                break;
+            case "Bus":
+                vitesse = 300; // Vitesse en m/s
+                break;
+        }
+
+        return (distance / vitesse) + 60; // Temps de correspondance de 1 minute (60 secondes)
+    }
+
+    public static double calculerAccessibilite(Station station) {
+        for (String service : station.getServicesDisponibles()) {
+            if (service.contains("♿️🚫")) {
+                return 0; // Pas d'accessibilité
+            }
+        }
+        return 1; // Accessibilité disponible
     }
 
     public static void getLignes() {
