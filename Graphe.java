@@ -1,9 +1,33 @@
-public class Lignes {
-    public static void getLignes() {
-        System.out.println("Les lignes sont cool");
     
-                   //A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z
-    int[][] lignes={{0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//A
+//Transfère notre graphe dans la méthode de WOODWARD
+
+
+import java.util.*;
+
+class Graphe {
+    private Map<Character, List<Character>> adjList;
+    public Graphe() {
+        this.adjList = new HashMap<>();
+    }
+
+    public void addEdge(char from, char to) {
+        adjList.putIfAbsent(from, new ArrayList<>());
+        adjList.putIfAbsent(to, new ArrayList<>()); // S'assure que le sommet existe
+        adjList.get(from).add(to);
+        adjList.get(to).add(from); // Supposons un graphe **non orienté**
+    }
+
+    public void printGraph() {
+        for (var entry : adjList.entrySet()) {
+            System.out.print(entry.getKey() + " -> ");
+            System.out.println(entry.getValue());
+        }
+    }
+
+    public static void main(String[] args) {
+        int[][] lignes = {
+            // Copie intégrale de ta matrice d'adjacence
+                    {0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//A
                     {1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//B
                     {1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//C
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},//D
@@ -29,14 +53,17 @@ public class Lignes {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},//X
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},//Y
                     {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} //Z
-                };
-    }
+        };
 
+        Graphe graph = new Graphe();
+        for (int i = 0; i < lignes.length; i++) {
+            for (int j = i + 1; j < lignes[i].length; j++) {
+                if (lignes[i][j] != 0) { 
+                    graph.addEdge((char) ('A' + i), (char) ('A' + j));
+                }
+            }
+        }
 
-
-
-    public static void afficherInformationsLigne(int idLigne) {
-        // TODO : implémenter la méthode
-        throw new UnsupportedOperationException("Unimplemented method 'listerStationsAlphabetiquementInverse'");
+        graph.printGraph();
     }
 }
