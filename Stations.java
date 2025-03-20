@@ -310,8 +310,9 @@ public class Stations {
     }
 
     public static void listerToutesLesStationsInverse() {
-        // TODO : implémenter la méthode
-        throw new UnsupportedOperationException("Unimplemented method 'listerStationsAlphabetiquementInverse'");
+        for (int i = listeStations.size() - 1; i >= 0; i--) {
+            System.out.println(listeStations.get(i).toString());
+        }
     }
 
     /**
