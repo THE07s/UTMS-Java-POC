@@ -66,9 +66,9 @@ public class Interface {
                 montrerMenu();
                 break;
             case "6":
-                Prix.getPrixTicket();
-                System.out.print("\n\n");
-                montrerMenu();
+                // Prix.getPrixTicket();
+                // System.out.print("\n\n");
+                // montrerMenu();
                 break;
             case "7":
                 System.exit(0);
