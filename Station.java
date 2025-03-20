@@ -30,8 +30,6 @@ public class Station {
      * @param identifiant           L'identifiant numérique de la station.
      * @param nom                   Le nom de la station.
      * @param servicesDisponibles   Les services disponibles à la station.
-     * @param modeTransport         Les différents modes de transport disponibles.
-     * @param lignesDesservies      Les lignes de transport desservies par la station.
      *
      * @param degLat                Degrés de la latitude.
      * @param minLat                Minutes de la latitude.
@@ -46,8 +44,6 @@ public class Station {
     public Station(int identifiant,
                    String nom,
                    String[] servicesDisponibles,
-                   String[] modeTransport,
-                   String[] lignesDesservies,
                    int degLat,
                    int minLat,
                    double secLat,

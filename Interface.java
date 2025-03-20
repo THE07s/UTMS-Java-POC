@@ -21,6 +21,7 @@ public class Interface {
         switch (choix) {
             case "1":
                 // Trier et afficher les stations dans l'ordre alphabétique inverse
+                Main.effacerTerminal();
                 System.out.println("===========================================================");
                 System.out.println("|                     LISTE DE STATIONS                   |");
                 System.out.println("===========================================================");
@@ -54,6 +55,7 @@ public class Interface {
                 montrerMenu();
                 break;
             case "4":
+                Main.effacerTerminal();
                 Lignes.listerToutesLesLignes();
                 System.out.print("\n\n");
                 montrerMenu();
@@ -66,14 +68,17 @@ public class Interface {
                 montrerMenu();
                 break;
             case "6":
+                Main.effacerTerminal();
                 // Prix.getPrixTicket();
                 // System.out.print("\n\n");
                 // montrerMenu();
                 break;
             case "7":
+                Main.effacerTerminal();
                 System.exit(0);
                 break;
             default:
+                Main.effacerTerminal();
                 System.out.println("Choix invalide");
                 System.out.print("\n\n");
                 montrerMenu();
