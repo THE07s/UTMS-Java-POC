@@ -36,12 +36,16 @@ public class Ligne {
         return nom;
     }
 
-    public String getmodeTransport() {
+    public String getModeTransport() {
         return modeTransport;
     }
 
-    public String getlignesDesservies() {
+    public String getStationsDesservies() {
         return Arrays.toString(stationsDesservies);
+    }
+
+    public String[] getListeStationsDesservies() {
+        return stationsDesservies;
     }
 
     public String toString() {
@@ -53,7 +57,7 @@ public class Ligne {
      */
     public String informationsDetaillees() {
         return "Nom : " + nom + "\n"
-             + "Mode de transport : " + this.getmodeTransport() + "\n"
-             + "Stations desservies : " + this.getlignesDesservies() + "\n";
+             + "Mode de transport : " + this.getModeTransport() + "\n"
+             + "Stations desservies : " + this.getStationsDesservies() + "\n";
     }
 }

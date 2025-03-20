@@ -1,4 +1,5 @@
 public class Interface {
+    private static String typeUsager;
     public static void montrerMenu() {
         System.out.println("===========================================================");
         System.out.println("|                       MENU PRINCIPAL                    |");
@@ -29,8 +30,9 @@ public class Interface {
                 System.out.println("| 2) Ordre anti-alphabétique                              |");
                 System.out.println("===========================================================");
                 System.out.print("\nVeuillez choisir une option: ");
-                String choix_liste_station = System.console().readLine();
-                switch (choix_liste_station) {
+                String choixListeStation = System.console().readLine();
+                System.out.print(" ----->>> 👌\n");
+                switch (choixListeStation) {
                     case "1":
                         Stations.listerToutesLesStations();
                         break;
@@ -41,42 +43,68 @@ public class Interface {
                 System.out.print("\n\n");
                 montrerMenu();
                 break;
+
+
             case "2":
                 System.out.print("Entrez l'ID de la station: ");
                 int idStation = Integer.parseInt(System.console().readLine());
+                System.out.print(" ----->>> 👌\n");
                 Stations.afficherInformationsStation(idStation);
                 System.out.print("\n\n");
                 montrerMenu();
                 break;
+                
+
             case "3":
-                // Trajet prenant en compte les contraintes d’accessibilité et affichant distances et temps de trajet
-                Trajet.getTrajet();
+                System.out.println("===========================================================");
+                System.out.println("|               QUEL TYPE D'USAGER ÊTES-VOUS ?            |");
+                System.out.println("===========================================================");
+                System.out.println("| 1) Usager régulier                                      |");
+                System.out.println("| 2) Étudiant                                             |");
+                System.out.println("| 3) Usager en situation de handicap                      |");
+                System.out.println("===========================================================");
+                System.out.print("\nVeuillez choisir une option: ");
+                typeUsager = System.console().readLine();
+                System.out.print(" ----->>> 👌\n");
+
+                Trajet.getGraphes();
                 System.out.print("\n\n");
                 montrerMenu();
                 break;
+
+
             case "4":
                 Main.effacerTerminal();
                 Lignes.listerToutesLesLignes();
                 System.out.print("\n\n");
                 montrerMenu();
                 break;
+
+
             case "5":
                 System.out.print("Entrez l'ID de la ligne: ");
                 int idLigne = Integer.parseInt(System.console().readLine());
+                System.out.print(" ----->>> 👌\n");
                 Lignes.afficherInformationsLigne(idLigne);
                 System.out.print("\n\n");
                 montrerMenu();
                 break;
+
+
             case "6":
                 Main.effacerTerminal();
                 // Prix.getPrixTicket();
                 // System.out.print("\n\n");
                 // montrerMenu();
                 break;
+
+
             case "7":
                 Main.effacerTerminal();
                 System.exit(0);
                 break;
+
+
             default:
                 Main.effacerTerminal();
                 System.out.println("Choix invalide");
@@ -84,5 +112,9 @@ public class Interface {
                 montrerMenu();
                 break;
         }
+    }
+
+    public static String getTypeUsager(){
+        return typeUsager;
     }
 }
