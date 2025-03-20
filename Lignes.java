@@ -1,122 +1,104 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Vector;
 
 public class Lignes {
-    private static Graph<String> graphPrix;
-    private static Graph<String> graphDistance;
-    private static Graph<String> graphAccessibilite;
-    private static Graph<String> graphTemps;
 
+    private static Vector<Ligne> listeLignes = new Vector<>();
+
+    // Bloc statique : initialisation de toutes les lignes
     static {
-        graphPrix = new Graph<>(false, true);
-        graphDistance = new Graph<>(false, true);
-        graphAccessibilite = new Graph<>(false, true);
-        graphTemps = new Graph<>(false, true);
+        // 1) Millenium
+        listeLignes.add(new Ligne(
+                1,
+                "Millenium",
+                "Metro",
+                new String[]{"Jubilee Place", "King’s Way", "Grand Central", "Market Place", "Northgate Shopping Centre"}
+        ));
 
-        // Exemple de données pour les lignes
-        String[] stations = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+        // 2) Heritage
+        listeLignes.add(new Ligne(
+                2,
+                "Heritage",
+                "Metro",
+                new String[]{"Ashford Road", "Brookside Avenue", "Fairfields", "Grand Central", "Town Hall", "Victoria Docks"}
+        ));
 
-        // Ajouter des nœuds aux graphes
-        for (String station : stations) {
-            graphPrix.addNode(station);
-            graphDistance.addNode(station);
-            graphAccessibilite.addNode(station);
-            graphTemps.addNode(station);
-        }
+        // 3) University
+        listeLignes.add(new Ligne(
+                3,
+                "University",
+                "Bus",
+                new String[]{"Ashford Road", "Castle Hill", "High Street", "Northgate Shopping Centre", "Xenobiotics Research Center", "Victoria Docks"}
+        ));
 
-        // Ajouter des exemples d'arêtes avec des poids différents pour chaque graphe
-        addEdge("A", "B", 2.5, 1000, 1, 10);
-        addEdge("A", "C", 3.0, 1500, 1, 15);
-        addEdge("B", "D", 1.5, 500, 0, 5);
-        // Ajoutez d'autres arêtes selon vos besoins
+        // 4) Riverview
+        listeLignes.add(new Ligne(
+                4,
+                "Riverview",
+                "Bus",
+                new String[]{"Southbank Place", "Union Street", "Waterfront", "Victoria Docks"}
+        ));
+
+        // 5) Parkland
+        listeLignes.add(new Ligne(
+                5,
+                "Parkland",
+                "Tram",
+                new String[]{"Parkside Place", "Jubilee Place", "King’s Way", "Southbank Place", "Grand Central", "Eastbourne West", "Brookside Avenue"}
+        ));
+
+        // 6) Market
+        listeLignes.add(new Ligne(
+                6,
+                "Market",
+                "Tram",
+                new String[]{"Eastbourne West", "Fairfields", "Market Place", "Victoria Docks"}
+        ));
+
+        // 7) Greenway
+        listeLignes.add(new Ligne(
+                7,
+                "Greenway",
+                "Bus",
+                new String[]{"Zephyr Close", "Dunham End", "King’s Way", "Grand Central", "Fairfields", "Lakeside", "High Street"}
+        ));
+
+        // 8) Southern Loop
+        listeLignes.add(new Ligne(
+                8,
+                "Southern Loop",
+                "Bus",
+                new String[]{"Eastbourne West", "Ivy Lane", "Oakwoods", "Queensbridge", "Parkside Place", "York Road", "Riverside"}
+        ));
     }
 
-    private static void addEdge(String from, String to, double prix, double distance, double accessibilite, double temps) {
-        graphPrix.addEdge(from, to, prix);
-        graphDistance.addEdge(from, to, distance);
-        graphAccessibilite.addEdge(from, to, accessibilite);
-        graphTemps.addEdge(from, to, temps);
+    /**
+     * Retourne le Vector complet des lignes.
+     */
+    public static Vector<Ligne> getListeLignes() {
+        return listeLignes;
     }
 
-    public static double calculerPrix(double distance, String typeTransport, String typeUsager) {
-        double tarifBase = 1.50; // Tarif de base en euros
-        double multiplicateur = 1.0;
-
-        switch (typeTransport) {
-            case "Metro":
-                multiplicateur = 1.2;
-                break;
-            case "Tram":
-                multiplicateur = 1.0;
-                break;
-            case "Bus":
-                multiplicateur = 0.8;
-                break;
+    /**
+     * Affiche toutes les lignes (ID + Nom) dans la console.
+     */
+    public static void listerToutesLesLignes() {
+        for (Ligne l : listeLignes) {
+            System.out.println(l.toString());
         }
-
-        switch (typeUsager) {
-            case "handicapé":
-                multiplicateur *= 0.5;
-                break;
-            case "étudiant":
-                multiplicateur *= 0.8;
-                break;
-            case "normal":
-                multiplicateur *= 1.0;
-                break;
-        }
-
-        return tarifBase + (distance / 1000) * multiplicateur;
     }
 
-    public static double calculerTemps(double distance, String typeTransport) {
-        double vitesse = 0;
-
-        switch (typeTransport) {
-            case "Metro":
-                vitesse = 500; // Vitesse en m/s
-                break;
-            case "Tram":
-                vitesse = 400; // Vitesse en m/s
-                break;
-            case "Bus":
-                vitesse = 300; // Vitesse en m/s
-                break;
-        }
-
-        return (distance / vitesse) + 60; // Temps de correspondance de 1 minute (60 secondes)
-    }
-
-    public static double calculerAccessibilite(Station station) {
-        for (String service : station.getServicesDisponibles()) {
-            if (service.contains("♿️🚫")) {
-                return 0; // Pas d'accessibilité
+    /**
+     * Affiche les informations détaillées d'une ligne en fonction de son identifiant.
+     *
+     * @param identifiant Identifiant de la ligne.
+     */
+    public static void afficherInformationsLigne(int identifiant) {
+        for (Ligne l : listeLignes) {
+            if (l.getIdentifiant() == identifiant) {
+                System.out.println(l.informationsDetaillees());
+                return;
             }
         }
-        return 1; // Accessibilité disponible
-    }
-
-    public static void getLignes() {
-        System.out.println("Les lignes sont cool");
-    }
-
-    public static void afficherInformationsLigne(int idLigne) {
-        // TODO : implémenter la méthode
-        throw new UnsupportedOperationException("Unimplemented method 'afficherInformationsLigne'");
-    }
-
-    public static void main(String[] args) {
-        // Exemple d'utilisation
-        System.out.println("Graph par prix:");
-        System.out.println(graphPrix.representation());
-
-        System.out.println("Graph par distance:");
-        System.out.println(graphDistance.representation());
-
-        System.out.println("Graph par accessibilité:");
-        System.out.println(graphAccessibilite.representation());
-
-        System.out.println("Graph par temps:");
-        System.out.println(graphTemps.representation());
+        System.out.println("Aucune ligne ne correspond à l'ID : " + identifiant);
     }
 }

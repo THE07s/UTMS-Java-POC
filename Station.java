@@ -11,7 +11,6 @@ public class Station {
     private int identifiant;
     private String nom;
     private String[] servicesDisponibles;
-    private String[] lignesDesservies;
 
     // --- Coordonnées latitude ---
     private int degresLatitude;
@@ -31,6 +30,7 @@ public class Station {
      * @param identifiant           L'identifiant numérique de la station.
      * @param nom                   Le nom de la station.
      * @param servicesDisponibles   Les services disponibles à la station.
+     * @param modeTransport         Les différents modes de transport disponibles.
      * @param lignesDesservies      Les lignes de transport desservies par la station.
      *
      * @param degLat                Degrés de la latitude.
@@ -46,6 +46,7 @@ public class Station {
     public Station(int identifiant,
                    String nom,
                    String[] servicesDisponibles,
+                   String[] modeTransport,
                    String[] lignesDesservies,
                    int degLat,
                    int minLat,
@@ -59,7 +60,6 @@ public class Station {
         this.identifiant = identifiant;
         this.nom = nom;
         this.servicesDisponibles = servicesDisponibles;
-        this.lignesDesservies = lignesDesservies;
 
         this.degresLatitude = degLat;
         this.minutesLatitude = minLat;
@@ -84,10 +84,6 @@ public class Station {
 
     public String getServicesDisponibles() {
         return Arrays.toString(servicesDisponibles);
-    }
-
-    public String getLignesDesservies() {
-        return Arrays.toString(lignesDesservies);
     }
 
     public int getDegresLatitude() {
@@ -132,7 +128,6 @@ public class Station {
     public String informationsDetaillees() {
         return "Nom : " + nom + "\n"
              + "Services disponibles : " + this.getServicesDisponibles() + "\n"
-             + "Lignes desservies : " + this.getLignesDesservies() + "\n"
              + "Coordonnées : "
              + degresLatitude + "° "
              + minutesLatitude + "' "
