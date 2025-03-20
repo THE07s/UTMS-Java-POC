@@ -54,7 +54,7 @@ public class Interface {
                 montrerMenu();
                 break;
             case "4":
-                Stations.listerToutesLesLignes();
+                Lignes.listerToutesLesLignes();
                 System.out.print("\n\n");
                 montrerMenu();
                 break;
