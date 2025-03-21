@@ -10,7 +10,7 @@ public class Lignes {
     /**
      * Retourne la liste complète des lignes.
      */
-    private static final Vector<Ligne> listeLignes = new Vector<>();
+    private static Vector<Ligne> listeLignes = new Vector<>();
 
     // Bloc statique : initialisation de toutes les lignes
     static {

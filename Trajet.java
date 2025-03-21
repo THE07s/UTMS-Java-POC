@@ -7,12 +7,12 @@ import java.util.HashMap;
  * Trajet gère le calcul d'itinéraires en utilisant les objets Station et Ligne.
 */
 public class Trajet {
-    private static final Graph<String> graphPrix;
-    private static final Graph<String> graphDistance;
-    private static final Graph<String> graphTemps;
+    private static Graph<String> graphPrix;
+    private static Graph<String> graphDistance;
+    private static Graph<String> graphTemps;
     
     // Nouvelle map pour enregistrer le mode de transport associé à chaque arête (venant de ChatGPT)
-    private static final HashMap<String, String> edgeModes = new HashMap<>();
+    private static HashMap<String, String> edgeModes = new HashMap<>();
 
     static {
         // Initialisation des graphes
