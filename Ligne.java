@@ -7,10 +7,10 @@ import java.util.Arrays;
  * Elle contient un identifiant, un nom, un mode de transport et la liste des stations desservies.
  */
 public class Ligne {
-    private int identifiant;
-    private String nom;
-    private String modeTransport;
-    private String[] stationsDesservies;
+    private final int identifiant;
+    private final String nom;
+    private final String modeTransport;
+    private final String[] stationsDesservies;
 
     /**
      * Constructeur de Ligne.

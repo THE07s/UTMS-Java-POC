@@ -10,7 +10,7 @@ public class Stations {
     /**
      * Retourne la liste complète des stations.
      */
-    private static Vector<Station> listeStations = new Vector<>();
+    private static final Vector<Station> listeStations = new Vector<>();
 
     // Bloc statique : initialisation de toutes les stations
     static {
