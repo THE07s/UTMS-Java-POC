@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 /**
  * Trajet gère le calcul d'itinéraires en utilisant les objets Station et Ligne.
- */
+  */
 public class Trajet {
     private static Graph<String> graphPrix;
     private static Graph<String> graphDistance;
@@ -72,8 +72,8 @@ public class Trajet {
     }
 
     /**
-     * Recherche une station par son nom dans la liste.
-     * @param liste la liste des stations
+     * Recherche une station à partir de son nom.
+     *
      * @param nom le nom de la station recherchée
      * @return la station correspondante ou null
      */
@@ -87,7 +87,11 @@ public class Trajet {
     }
 
     /**
-     * Calcule la distance entre deux stations à l'aide de la formule de Haversine.
+     * Calcule la distance entre deux stations en utilisant la formule de Haversine.
+     *
+     * @param s1 la première station
+     * @param s2 la deuxième station
+     * @return la distance en mètres entre les deux stations
      */
     private static double calculerDistance(Station s1, Station s2) {
         double lat1 = Math.toRadians(getLatitudeDecimale(s1));
@@ -104,6 +108,12 @@ public class Trajet {
         return R * c;
     }
 
+    /**
+     * Renvoie la latitude décimale d'une station.
+     *
+     * @param s la station
+     * @return la latitude en format décimal
+     */
     private static double getLatitudeDecimale(Station s) {
         double minutesFraction = s.getMinutesLatitude() / 60.0;
         double secondesFraction = s.getSecondesLatitude() / 3600.0;
@@ -111,6 +121,12 @@ public class Trajet {
         return decimal;
     }
 
+    /**
+     * Renvoie la longitude décimale d'une station.
+     *
+     * @param s la station
+     * @return la longitude en format décimal
+     */
     private static double getLongitudeDecimale(Station s) {
         double minutesFraction = s.getMinutesLongitude() / 60.0;
         double secondesFraction = s.getSecondesLongitude() / 3600.0;
@@ -119,7 +135,15 @@ public class Trajet {
     }
 
     /**
-     * Ajoute une arête aux graphes.
+     * Ajoute une arête dans les graphes et enregistre le mode de transport associé.
+     *
+     * @param from           la station de départ
+     * @param to             la station d'arrivée
+     * @param prix           le coût associé à l'arête
+     * @param distance       la distance entre les stations
+     * @param accessibilite  l'accessibilité de l'arête (0 ou 1)
+     * @param temps          le temps de trajet sur l'arête
+     * @param modeTransport  le mode de transport utilisé
      */
     private static void addEdge(String from, String to, double prix, double distance, double accessibilite, double temps, String modeTransport) {
         graphPrix.addEdge(from, to, prix);
@@ -148,11 +172,11 @@ public class Trajet {
         return tarifBase + (distance / 1000) * multiplicateur;
     }
 
-    public static double getTarifBase() {
+        public static double getTarifBase() {
         return 1.50;
     }
 
-    public static double getIncrementPourSegment(String mode) {
+        public static double getIncrementPourSegment(String mode) {
         switch (mode) {
             case "Metro":
                 return 0.40;
@@ -165,7 +189,7 @@ public class Trajet {
         }
     }
 
-    public static double getReduction(String typeUsager) {
+        public static double getReduction(String typeUsager) {
         switch (typeUsager) {
             case "3":
                 return 0.5;
@@ -193,6 +217,11 @@ public class Trajet {
 
     /**
      * Détermine l'accessibilité d'une station.
+     * Si l'un des services disponibles contient le symbole "♿️🚫", la station est considérée comme
+     * inaccessible.
+     *
+     * @param station la station à tester
+     * @return 0 si la station n'est pas accessible, 1 sinon
      */
     public static double calculerAccessibilite(Station station) {
         for (String service : station.getServicesDisponibles().split(", ")) {
@@ -203,15 +232,14 @@ public class Trajet {
         return 1;
     }
 
-
     /**
      * Produit et affiche un itinéraire entre deux stations.
-     */
+          */
     public static void produireItineraire() {
         Station departStation = chercherStationParId(Interface.getDepartId());
         Station arriveeStation = chercherStationParId(Interface.getArriveeId());
         
-        if(departStation == null || arriveeStation == null) {
+        if (departStation == null || arriveeStation == null) {
             System.out.println("L'une des stations spécifiées n'existe pas.");
             return;
         }
@@ -256,7 +284,7 @@ public class Trajet {
             // Calcul par segment : on affiche le segment et on cumule le coût fixe
             double segmentCost = getIncrementPourSegment(mode);
             totalIncrement += segmentCost;
-            double temps = calculerTemps(dist, mode); // conserver le calcul du temps selon vos critères
+            double temps = calculerTemps(dist, mode);
             
             System.out.println("De " + from + " à " + to + " (" + mode + ") : " +
                                "Distance = " + String.format("%.2f", dist) + " m, " +
@@ -269,6 +297,12 @@ public class Trajet {
         System.out.println("Total : " + String.format("%.2f", totalPrix) + " €");
     }
 
+    /**
+     * Recherche une station à partir de son nom.
+     *
+     * @param nom le nom de la station recherchée
+     * @return la station correspondante, ou null si non trouvée
+     */
     private static Station chercherStationParNom(String nom) {
         for (Station s : Stations.getListeStations()) {
             if (s.getNom().equalsIgnoreCase(nom)) {
@@ -278,6 +312,12 @@ public class Trajet {
         return null;
     }
 
+    /**
+     * Recherche une station à partir de son identifiant.
+     *
+     * @param id l'identifiant de la station
+     * @return la station correspondante, ou null si non trouvée
+     */
     private static Station chercherStationParId(int id) {
         for (Station s : Stations.getListeStations()) {
             if (s.getIdentifiant() == id) { 

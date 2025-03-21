@@ -28,6 +28,10 @@ public class Station {
 
     /**
      * Constructeur de la classe Station.
+     * * <p>
+     * Initialise une nouvelle instance de Station en spécifiant l'identifiant, le nom,
+     * la liste des services disponibles et les coordonnées de la station.
+     * </p>
      *
      * @param identifiant           L'identifiant numérique de la station.
      * @param nom                   Le nom de la station.
@@ -126,6 +130,11 @@ public class Station {
 
     /**
      * Retourne une description détaillée de la station.
+* <p>
+     * La description inclut le nom, les services disponibles et les coordonnées complètes.
+     * </p>
+     *
+     * @return une chaîne détaillant les informations de la station.
      */
     public String informationsDetaillees() {
         return "Nom : " + nom + "\n"

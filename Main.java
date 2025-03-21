@@ -1,6 +1,11 @@
 // --- Main.java ---
 /**
  * Classe principale de l'application UTMS.
+ * <p>
+ * Cette classe lance l'interface utilisateur de l'application en appelant
+ * la méthode {@code montrerMenu()} de la classe {@link Interface} après avoir
+ * effacé le terminal.
+ * </p>
  * 
  * Lance l'interface utilisateur.
  */
@@ -11,7 +16,17 @@ public class Main {
     }
 
     /**
-     * Efface le terminal.
+     * Efface le contenu du terminal.
+     * <p>
+     * Cette méthode permet de nettoyer le terminal de commande en fonction du système d'exploitation :
+     * <ul>
+     *   <li>Sur Windows, la commande {@code cls} est utilisée.</li>
+     *   <li>Sur les systèmes Unix/Linux/Mac, la séquence d'échappement ANSI est utilisée.</li>
+     * </ul>
+     * </p>
+     *
+     * @implNote Utilise {@link ProcessBuilder} pour exécuter la commande système appropriée.
+     * @author ChatGPT
      */
     public static void effacerTerminal() {
         try {
