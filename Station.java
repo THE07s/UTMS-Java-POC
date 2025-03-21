@@ -10,25 +10,25 @@ import java.util.Arrays;
 public class Station {
 
     // --- Attributs principaux ---
-    private final int identifiant;
-    private final String nom;
-    private final String[] servicesDisponibles;
+    private int identifiant;
+    private String nom;
+    private String[] servicesDisponibles;
 
     // --- Coordonnées latitude ---
-    private final int degresLatitude;
-    private final int minutesLatitude;
-    private final double secondesLatitude;
-    private final char directionLatitude; // 'N' ou 'S'
+    private int degresLatitude;
+    private int minutesLatitude;
+    private double secondesLatitude;
+    private char directionLatitude; // 'N' ou 'S'
 
     // --- Coordonnées longitude ---
-    private final int degresLongitude;
-    private final int minutesLongitude;
-    private final double secondesLongitude;
-    private final char directionLongitude; // 'E' ou 'W'
+    private int degresLongitude;
+    private int minutesLongitude;
+    private double secondesLongitude;
+    private char directionLongitude; // 'E' ou 'W'
 
     /**
      * Constructeur de la classe Station.
-     * * <p>
+     * <p>
      * Initialise une nouvelle instance de Station en spécifiant l'identifiant, le nom,
      * la liste des services disponibles et les coordonnées de la station.
      * </p>

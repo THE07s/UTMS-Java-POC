@@ -1,7 +1,7 @@
 // --- Interface.java ---
 /**
  * Interface du système UTMS.
-  * 
+ * 
  * Un menu principal pour interagir avec l'utilisateur.
  */
 public class Interface {
@@ -45,7 +45,7 @@ public class Interface {
      *   <li>Choisir un trajet. Dans ce cas, l'utilisateur doit sélectionner son type (régulier, étudiant ou handicapé),
      *       indiquer les IDs des stations de départ et d'arrivée, puis choisir un critère d'optimisation.</li>
      *   <li>Afficher la liste des lignes ou le détail d'une ligne.</li>
-     *   <li>Afficher les informations concernant le prix du ticket (action non implémentée ici).</li>
+     *   <li>Afficher les informations concernant le prix du ticket (non implémentée).</li>
      *   <li>Quitter l'application.</li>
      * </ul>
      * </p>
@@ -145,7 +145,7 @@ public class Interface {
                 // Méthode d'affichage du ticket non implémentée ici.
                 // Prix.getPrixTicket();
                 // System.out.print("\n\n");
-                // montrerMenu();
+                montrerMenu();
                 break;
 
             case "7":

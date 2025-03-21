@@ -1,13 +1,11 @@
 // --- Main.java ---
 /**
- * Classe principale de l'application UTMS.
+ * Classe principale de l'application.
  * <p>
  * Cette classe lance l'interface utilisateur de l'application en appelant
  * la méthode {@code montrerMenu()} de la classe {@link Interface} après avoir
  * effacé le terminal.
  * </p>
- * 
- * Lance l'interface utilisateur.
  */
 public class Main {
     public static void main(String[] args) {
