@@ -1,3 +1,5 @@
+// --- Station.java ---
+
 import java.util.Arrays;
 
 /**
@@ -70,14 +72,17 @@ public class Station {
 
     // --- Getters (accesseurs) ---
 
+    /** Retourne l'identifiant de la station. */
     public int getIdentifiant() {
         return identifiant;
     }
 
+    /** Retourne le nom de la station. */
     public String getNom() {
         return nom;
     }
 
+    /** Retourne les services disponibles sous forme de chaîne. */
     public String getServicesDisponibles() {
         return Arrays.toString(servicesDisponibles);
     }
@@ -114,12 +119,13 @@ public class Station {
         return directionLongitude;
     }
 
+    /** Renvoie une représentation simple de la station. */
     public String toString() {
         return identifiant + ") " + nom;
     }
 
     /**
-     * Retourne une chaîne détaillée des informations de la station.
+     * Retourne une description détaillée de la station.
      */
     public String informationsDetaillees() {
         return "Nom : " + nom + "\n"

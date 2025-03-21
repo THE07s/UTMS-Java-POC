@@ -1,7 +1,15 @@
+// --- Stations.java ---
+
 import java.util.Vector;
 
+/**
+ * Stations gère la liste de toutes les stations du réseau.
+ */
 public class Stations {
 
+    /**
+     * Retourne la liste complète des stations.
+     */
     private static Vector<Station> listeStations = new Vector<>();
 
     // Bloc statique : initialisation de toutes les stations
@@ -241,9 +249,7 @@ public class Stations {
         ));
     }
 
-    /**
-     * Retourne le Vector complet des stations.
-     */
+    /** Affiche la liste des stations (ordre normal). */
     public static Vector<Station> getListeStations() {
         return listeStations;
     }
@@ -257,6 +263,7 @@ public class Stations {
         }
     }
 
+    /** Affiche la liste des stations (ordre inverse). */
     public static void listerToutesLesStationsInverse() {
         for (int i = listeStations.size() - 1; i >= 0; i--) {
             System.out.println(listeStations.get(i).toString());

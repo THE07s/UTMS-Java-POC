@@ -1,19 +1,24 @@
+// --- Ligne.java ---
+
 import java.util.Arrays;
 
+/**
+ * La classe Ligne représente une ligne de transport.
+ * Elle contient un identifiant, un nom, un mode de transport et la liste des stations desservies.
+ */
 public class Ligne {
-
-    // --- Attributs principaux ---
     private int identifiant;
     private String nom;
     private String modeTransport;
     private String[] stationsDesservies;
 
     /**
-     * Constructeur de la classe Station.
-     *
-     * @param identifiant           L'identifiant numérique de la ligne.
-     * @param nom                   Le nom de la ligne.
-     * @param modeTransport         Les différents modes de transport disponibles.
+     * Constructeur de Ligne.
+     * 
+     * @param identifiant L'identifiant de la ligne.
+     * @param nom Le nom de la ligne.
+     * @param modeTransport Le mode de transport (Metro, Bus, Tram, etc.).
+     * @param stationsDesservies Le tableau des noms de stations desservies.
      */
     public Ligne(int identifiant,
                  String nom,
@@ -53,7 +58,7 @@ public class Ligne {
     }
 
     /**
-     * Retourne une chaîne détaillée des informations de la ligne.
+     * Retourne une description détaillée de la ligne.
      */
     public String informationsDetaillees() {
         return "Nom : " + nom + "\n"

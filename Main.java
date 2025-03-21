@@ -1,9 +1,18 @@
+// --- Main.java ---
+/**
+ * Classe principale de l'application UTMS.
+ * 
+ * Lance l'interface utilisateur.
+ */
 public class Main {
     public static void main(String[] args) {
         effacerTerminal();
         Interface.montrerMenu();
     }
-    
+
+    /**
+     * Efface le terminal.
+     */
     public static void effacerTerminal() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {

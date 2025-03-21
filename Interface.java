@@ -1,5 +1,18 @@
+// --- Interface.java ---
+/**
+ * Interface du système UTMS.
+ * 
+ * Un menu principal pour interagir avec l'utilisateur.
+ */
 public class Interface {
     private static String typeUsager;
+    private static int departId;
+    private static int arriveeId;
+    private static String choixCritere;
+
+    /**
+     * Affiche le menu principal et demande un choix utilisateur.
+     */
     public static void montrerMenu() {
         System.out.println("===========================================================");
         System.out.println("|                       MENU PRINCIPAL                    |");
@@ -18,6 +31,11 @@ public class Interface {
         choixMenu(choix);
     }
 
+    /**
+     * Gère le choix de l'utilisateur dans le menu principal.
+     * 
+     * @param choix La réponse saisie par l'utilisateur.
+     */
     public static void choixMenu(String choix) {
         switch (choix) {
             case "1":
@@ -67,7 +85,27 @@ public class Interface {
                 typeUsager = System.console().readLine();
                 System.out.print(" ----->>> 👌\n");
 
-                Trajet.getGraphes();
+                System.out.print("ID de la station de départ : ");
+                String departIdStr = System.console().readLine();
+                departId = Integer.parseInt(departIdStr);
+                
+                System.out.print("ID de la station d'arrivée : ");
+                String arriveeIdStr = System.console().readLine();
+                arriveeId = Integer.parseInt(arriveeIdStr);
+
+                System.out.println("===========================================================");
+                System.out.println("|          QUEL EST VÔTRE CRITÈRE D'OPTIMISATION ?        |");
+                System.out.println("===========================================================");
+                System.out.println("| 1) Le prix                                              |");
+                System.out.println("| 2) Le temps                                             |");
+                System.out.println("| 3) La distance                                          |");
+                System.out.println("===========================================================");
+                System.out.print("\nVeuillez choisir une option: ");
+                choixCritere = System.console().readLine();
+                System.out.print(" ----->>> 👌\n");
+
+                Trajet.produireItineraire();
+
                 System.out.print("\n\n");
                 montrerMenu();
                 break;
@@ -114,7 +152,23 @@ public class Interface {
         }
     }
 
+    /** Retourne le type d'usager sélectionné. */
     public static String getTypeUsager(){
         return typeUsager;
+    }
+
+    /** Retourne l'ID de la station de départ. */
+    public static int getDepartId(){
+        return departId;
+    }
+
+    /** Retourne l'ID de la station d'arrivée. */
+    public static int getArriveeId(){
+        return arriveeId;
+    }
+
+    /** Retourne le critère d'optimisation choisi. */
+    public static String getChoixCritere(){
+        return choixCritere;
     }
 }

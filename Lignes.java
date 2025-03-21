@@ -1,7 +1,15 @@
+// --- Lignes.java ---
+
 import java.util.Vector;
 
+/**
+ * La classe Lignes gère la liste de toutes les lignes du réseau.
+ */
 public class Lignes {
 
+    /**
+     * Retourne la liste complète des lignes.
+     */
     private static Vector<Ligne> listeLignes = new Vector<>();
 
     // Bloc statique : initialisation de toutes les lignes
@@ -72,7 +80,7 @@ public class Lignes {
     }
 
     /**
-     * Retourne le Vector complet des lignes.
+     * Retourne la liste complète des lignes.
      */
     public static Vector<Ligne> getListeLignes() {
         return listeLignes;

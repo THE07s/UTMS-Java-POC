@@ -1,8 +1,11 @@
-import java.util.Vector;
-import java.util.Iterator;
+// --- Trajet.java ---
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Trajet gère le calcul d'itinéraires en utilisant les objets Station et Ligne.
+ */
 public class Trajet {
     private static Graph<String> graphPrix;
     private static Graph<String> graphDistance;
@@ -68,6 +71,12 @@ public class Trajet {
         addEdge("Queensbridge", "Riverside", prix, distance, accessibilite, temps, modeTransport);
     }
 
+    /**
+     * Recherche une station par son nom dans la liste.
+     * @param liste la liste des stations
+     * @param nom le nom de la station recherchée
+     * @return la station correspondante ou null
+     */
     private static Station convertirStation(String nom) {
         for (Station s : Stations.getListeStations()) {
             if (s.getNom().equals(nom)) {
@@ -77,6 +86,9 @@ public class Trajet {
         return null;
     }
 
+    /**
+     * Calcule la distance entre deux stations à l'aide de la formule de Haversine.
+     */
     private static double calculerDistance(Station s1, Station s2) {
         double lat1 = Math.toRadians(getLatitudeDecimale(s1));
         double lat2 = Math.toRadians(getLatitudeDecimale(s2));
@@ -106,6 +118,9 @@ public class Trajet {
         return decimal;
     }
 
+    /**
+     * Ajoute une arête aux graphes.
+     */
     private static void addEdge(String from, String to, double prix, double distance, double accessibilite, double temps, String modeTransport) {
         graphPrix.addEdge(from, to, prix);
         graphDistance.addEdge(from, to, distance);
@@ -114,6 +129,9 @@ public class Trajet {
         edgeModes.put(from + "-" + to, modeTransport);
     }
 
+    /**
+     * Calcule le prix en fonction de la distance, du type de transport et du type d'usager.
+     */
     public static double calculerPrix(double distance, String typeTransport, String typeUsager) {
         double tarifBase = 1.50;
         double multiplicateur = 1.0;
@@ -122,7 +140,7 @@ public class Trajet {
             case "Tram":   multiplicateur = 1.0; break;
             case "Bus":    multiplicateur = 0.8; break;
         }
-        switch (typeUsager.toLowerCase()) {
+        switch (typeUsager) {
             case "3":  multiplicateur *= 0.5; break;
             case "2":  multiplicateur *= 0.8; break;
             case "1":  multiplicateur *= 1.0; break;
@@ -130,6 +148,39 @@ public class Trajet {
         return tarifBase + (distance / 1000) * multiplicateur;
     }
 
+    public static double getTarifBase() {
+        return 1.50;
+    }
+
+    public static double getIncrementPourSegment(String mode) {
+        switch (mode) {
+            case "Metro":
+                return 0.40;
+            case "Tram":
+                return 0.30;
+            case "Bus":
+                return 0.20;
+            default:
+                return 0.0;
+        }
+    }
+
+    public static double getReduction(String typeUsager) {
+        switch (typeUsager) {
+            case "3":
+                return 0.5;
+            case "2":
+                return 0.8;
+            case "1":
+                return 1.0;
+            default:
+                return 1.0;
+        }
+    }
+
+    /**
+     * Calcule le temps de trajet.
+     */
     public static double calculerTemps(double distance, String typeTransport) {
         double vitesse = 0;
         switch (typeTransport) {
@@ -140,6 +191,9 @@ public class Trajet {
         return (distance / vitesse) + 60;
     }
 
+    /**
+     * Détermine l'accessibilité d'une station.
+     */
     public static double calculerAccessibilite(Station station) {
         for (String service : station.getServicesDisponibles().split(", ")) {
             if (service.trim().contains("♿️🚫")) {
@@ -149,20 +203,13 @@ public class Trajet {
         return 1;
     }
 
-    // --- NOUVELLE MÉTHODE : Production d'un itinéraire personnalisé ---
+
+    /**
+     * Produit et affiche un itinéraire entre deux stations.
+     */
     public static void produireItineraire() {
-        // Demander à l'utilisateur l'id de la station de départ et d'arrivée
-        System.out.print("ID de la station de départ : ");
-        String departIdStr = System.console().readLine();
-        int departId = Integer.parseInt(departIdStr);
-        
-        System.out.print("ID de la station d'arrivée : ");
-        String arriveeIdStr = System.console().readLine();
-        int arriveeId = Integer.parseInt(arriveeIdStr);
-        
-        // Récupérer les noms des stations à partir de leur id
-        Station departStation = chercherStationParId(departId);
-        Station arriveeStation = chercherStationParId(arriveeId);
+        Station departStation = chercherStationParId(Interface.getDepartId());
+        Station arriveeStation = chercherStationParId(Interface.getArriveeId());
         
         if(departStation == null || arriveeStation == null) {
             System.out.println("L'une des stations spécifiées n'existe pas.");
@@ -172,16 +219,8 @@ public class Trajet {
         String depart = departStation.getNom();
         String arrivee = arriveeStation.getNom();
         
-        // Demander le critère d'itinéraire
-        System.out.println("Choisissez le critère d'optimisation :");
-        System.out.println("1) Payer le moins cher");
-        System.out.println("2) Aller le plus vite");
-        System.out.println("3) Se déplacer sur la distance la plus courte");
-        System.out.print("Votre choix : ");
-        String choixCritere = System.console().readLine();
-        
         Graph<String> graphChoisi;
-        switch (choixCritere) {
+        switch (Interface.getChoixCritere()) {
             case "1":
                 graphChoisi = graphPrix;
                 break;
@@ -197,16 +236,14 @@ public class Trajet {
                 break;
         }
         
-        // Récupérer le chemin optimal (méthode Ford par exemple)
         ArrayList<String> chemin = graphChoisi.pathFollowed(depart, arrivee);
         if (chemin == null || chemin.isEmpty()) {
             System.out.println("Aucun itinéraire trouvé entre " + depart + " et " + arrivee);
             return;
         }
         
-        double totalPrix = 0, totalTemps = 0, totalDistance = 0;
+        double totalIncrement = 0;
         
-        // Affichage de l'itinéraire détaillé
         System.out.println("\nItinéraire de " + depart + " à " + arrivee + " :");
         for (int i = 0; i < chemin.size() - 1; i++) {
             String from = chemin.get(i);
@@ -215,23 +252,23 @@ public class Trajet {
             Station sFrom = chercherStationParNom(from);
             Station sTo = chercherStationParNom(to);
             double dist = calculerDistance(sFrom, sTo);
-            double prix = calculerPrix(dist, mode, Interface.getTypeUsager());
-            double temps = calculerTemps(dist, mode);
+            
+            // Calcul par segment : on affiche le segment et on cumule le coût fixe
+            double segmentCost = getIncrementPourSegment(mode);
+            totalIncrement += segmentCost;
+            double temps = calculerTemps(dist, mode); // conserver le calcul du temps selon vos critères
+            
             System.out.println("De " + from + " à " + to + " (" + mode + ") : " +
                                "Distance = " + String.format("%.2f", dist) + " m, " +
-                               "Temps = " + String.format("%.2f", temps) + " sec, " +
-                               "Prix = " + String.format("%.2f", prix) + " €");
-            totalPrix += prix;
-            totalTemps += temps;
-            totalDistance += dist;
+                               "Temps = " + String.format("%.2f", temps) + " sec ");
         }
         
-        System.out.println("\nTotal : Prix = " + String.format("%.2f", totalPrix) +
-                           " €, Temps = " + String.format("%.2f", totalTemps) + " sec, " +
-                           "Distance = " + String.format("%.2f", totalDistance) + " m");
+        double totalAvantReduction = getTarifBase() + totalIncrement;
+        double totalPrix = totalAvantReduction * getReduction(Interface.getTypeUsager());
+        
+        System.out.println("Total : " + String.format("%.2f", totalPrix) + " €");
     }
 
-    // Méthode utilitaire pour retrouver une station par son nom dans Stations
     private static Station chercherStationParNom(String nom) {
         for (Station s : Stations.getListeStations()) {
             if (s.getNom().equalsIgnoreCase(nom)) {
@@ -241,10 +278,9 @@ public class Trajet {
         return null;
     }
 
-    // Nouvelle méthode pour chercher une station à partir de son id
     private static Station chercherStationParId(int id) {
         for (Station s : Stations.getListeStations()) {
-            if (s.getId() == id) { // On suppose que la classe Station possède une méthode getId()
+            if (s.getIdentifiant() == id) { 
                 return s;
             }
         }
@@ -252,7 +288,7 @@ public class Trajet {
     }
 
     /**
-     * Affiche les représentations textuelles de chaque graphe.
+     * Affiche les représentations de chaque graphe.
      */
     public static void getGraphes() {
         System.out.println("Graph par prix:");
@@ -265,8 +301,4 @@ public class Trajet {
         System.out.println(graphTemps.representation());
     }
 
-    // public static void main(String[] args) {
-    //     // Par exemple, lancer la production d'itinéraire
-    //     produireItineraire();
-    // }
 }
